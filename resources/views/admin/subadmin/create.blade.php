@@ -1,7 +1,9 @@
 @extends('layouts.admin-master')
 @section('admin-content')
+
 @section('role') active show-sub @endsection
 @section('add-role') active @endsection
+
 
      <!-- ########## START: MAIN PANEL ########## -->
      <div class="sl-mainpanel">
@@ -17,8 +19,11 @@
               <div class="card">
                 <div class="card-header">Add New User</div>
                 <div class="card-body">
+                
                     <form method="POST" action="{{ route('subadmin.store') }}">
+                    
                         @csrf
+                        
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 

@@ -1,8 +1,9 @@
-
 @extends('layouts.admin-master')
 @section('admin-content')
+
 @section('shipping') active show-sub @endsection
 @section('add-state') active @endsection
+
 
      <!-- ########## START: MAIN PANEL ########## -->
      <div class="sl-mainpanel">
@@ -29,16 +30,16 @@
                     </thead>
                     <tbody>
                       @foreach ($states as $item)
-                      <tr>
-                        <td>{{ $item->division->division_name }}</td>
-                        <td>{{ $item->district->district_name }}</td>
-                        <td>{{ $item->state_name }}</td>
-                        <td>
-                          <a href="{{ url('admin/state-edit/'.$item->id) }}" class="btn btn-sm btn-primary" title="edit data"> <i class="fa fa-pencil"></i></a>
-
-                          <a href="{{ url('admin/state-delete/'.$item->id) }}" class="btn btn-sm btn-danger" id="delete" title="delete data"><i class="fa fa-trash"></i></a>
-                        </td>
-                      </tr>
+                              <tr>
+                                    <td>{{ $item->division->division_name }}</td>
+                                    <td>{{ $item->district->district_name }}</td>
+                                    <td>{{ $item->state_name }}</td>
+                                    <td>
+                                      <a href="{{ url('admin/state-edit/'.$item->id) }}" class="btn btn-sm btn-primary" title="edit data"> <i class="fa fa-pencil"></i></a>
+            
+                                      <a href="{{ url('admin/state-delete/'.$item->id) }}" class="btn btn-sm btn-danger" id="delete" title="delete data"><i class="fa fa-trash"></i></a>
+                                    </td>
+                              </tr>
                       @endforeach
                     </tbody>
                   </table>
@@ -50,7 +51,9 @@
               <div class="card">
                 <div class="card-header">Add New state</div>
                   <div class="card-body">
+                  
                 <form action="{{ route('state-store') }}" method="POST">
+                
                     @csrf
 
                     <div class="form-group">
@@ -89,6 +92,7 @@
                       <button type="submit" class="btn btn-info">state Create</button>
                     </div><!-- form-layout-footer -->
                   </form>
+                  
                   </div>
               </div>
             </div>

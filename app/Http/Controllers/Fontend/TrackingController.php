@@ -9,18 +9,28 @@ use Illuminate\Http\Request;
 
 class TrackingController extends Controller
 {
-    public function orderTrackNow(Request $request){
+    public function orderTrackNow(Request $request)
+	{
          $order = Order::with('division','district','state','user')->where('invoice_no',$request->invoice_no)->first();
-         if ($order) {
+		 
+         if ($order) 
+		 {
             $orderItems = OrderItem::with('product')->where('order_id',$order->id)->orderBy('id','DESC')->get();
+			
             return view('fontend.order-track',compact('order','orderItems'));
-         }else {
+         }
+		 else 
+		 {
             $notification=array(
                 'message'=>'Order Not Found',
                 'alert-type'=>'error'
             );
+			
             return Redirect()->back()->with($notification);
          }
 
     }
+	
+	
+	
 }

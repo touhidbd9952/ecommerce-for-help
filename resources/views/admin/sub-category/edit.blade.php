@@ -1,5 +1,6 @@
 @extends('layouts.admin-master')
 @section('admin-content')
+
 @section('categories') active show-sub @endsection
 @section('subcategory') active @endsection
 
@@ -13,9 +14,13 @@
         <div class="sl-pagebody">
             <div class="card pd-20 pd-sm-40">
               <h6 class="card-body-title">Update Sub-Category</h6>
+              
               <form action="{{ route('update-sub-category') }}" method="POST">
+              
                 @csrf
+                
                 <input type="hidden" name="id" value="{{ $subcategory->id }}">
+                
             <div class="row row-sm">
                     <div class="col-md-4">
                         <div class="form-group">

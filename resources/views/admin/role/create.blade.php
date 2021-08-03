@@ -1,7 +1,9 @@
 @extends('layouts.admin-master')
 @section('admin-content')
+
 @section('role') active show-sub @endsection
 @section('add-role') active @endsection
+
 
      <!-- ########## START: MAIN PANEL ########## -->
      <div class="sl-mainpanel">
@@ -17,8 +19,11 @@
               <div class="card">
                 <div class="card-header">Add New role</div>
                   <div class="card-body">
+                  
                 <form action="{{ route('role.store') }}" method="POST" >
+                
                     @csrf
+                    
                     <div class="form-group">
                       <label class="form-control-label">Role Name: <span class="tx-danger">*</span></label>
                       <input class="form-control" type="text" name="name" value="{{ old('name') }}" placeholder="Enter name">

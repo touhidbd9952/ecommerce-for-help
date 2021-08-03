@@ -1,8 +1,11 @@
 @extends('layouts.admin-master')
+@section('admin-content')
+
 @section('coupon')
     active
 @endsection
-@section('admin-content')
+
+
      <!-- ########## START: MAIN PANEL ########## -->
      <div class="sl-mainpanel">
         <nav class="breadcrumb sl-breadcrumb">
@@ -28,27 +31,29 @@
                       </tr>
                     </thead>
                     <tbody>
+                    
                       @foreach ($coupons as $item)
-                      <tr>
-                        <td>{{ $item->coupon_name }}</td>
-                        <td>{{ $item->coupon_discount }}%</td>
-                        <td>
-                            {{ Carbon\Carbon::parse($item->coupon_validity)->format('D, d F Y') }}
-                            </td>
-                        <td>
-                            @if ($item->coupon_validity >= Carbon\Carbon::now()->format('Y-m-d'))
-                            <span class="badge badge-pill badge-success">Valid</span>
-                          @else
-                          <span class="badge badge-pill badge-danger">Invalid</span>
-                        @endif
-                    </td>
-                        <td>
-                          <a href="{{ url('admin/coupon-edit/'.$item->id) }}" class="btn btn-sm btn-primary" title="edit data"> <i class="fa fa-pencil"></i></a>
-
-                          <a href="{{ url('admin/coupon-delete/'.$item->id) }}" class="btn btn-sm btn-danger" id="delete" title="delete data"><i class="fa fa-trash"></i></a>
-                        </td>
-                      </tr>
+                          <tr>
+                                <td>{{ $item->coupon_name }}</td>
+                                <td>{{ $item->coupon_discount }}%</td>
+                                <td>
+                                    {{ Carbon\Carbon::parse($item->coupon_validity)->format('D, d F Y') }}
+                                </td>
+                                <td>
+                                    @if ($item->coupon_validity >= Carbon\Carbon::now()->format('Y-m-d'))
+                                        <span class="badge badge-pill badge-success">Valid</span>
+                                    @else
+                                        <span class="badge badge-pill badge-danger">Invalid</span>
+                                    @endif
+                                </td>
+                                <td>
+                                     <a href="{{ url('admin/coupon-edit/'.$item->id) }}" class="btn btn-sm btn-primary" title="edit data"> <i class="fa fa-pencil"></i></a>
+        
+                                    <a href="{{ url('admin/coupon-delete/'.$item->id) }}" class="btn btn-sm btn-danger" id="delete" title="delete data"><i class="fa fa-trash"></i></a>
+                                </td>
+                          </tr>
                       @endforeach
+                      
                     </tbody>
                   </table>
                 </div><!-- table-wrapper -->
@@ -59,8 +64,11 @@
               <div class="card">
                 <div class="card-header">Add New Coupon</div>
                   <div class="card-body">
+                  
                 <form action="{{ route('coupon-store') }}" method="POST">
+                
                     @csrf
+                    
                     <div class="form-group">
                       <label class="form-control-label">Coupon Name: <span class="tx-danger">*</span></label>
                       <input class="form-control" type="text" name="coupon_name" value="{{ old('coupon_name') }}" placeholder="Enter coupon_name">
@@ -90,6 +98,7 @@
                       <button type="submit" class="btn btn-info">Add New</button>
                     </div><!-- form-layout-footer -->
                   </form>
+                  
                   </div>
               </div>
             </div>

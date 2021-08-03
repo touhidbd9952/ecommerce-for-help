@@ -1,6 +1,9 @@
 @extends('layouts.fontend-master')
 @section('content')
+
 @section('title') Checkout @endsection
+
+
 <div class="breadcrumb">
 	<div class="container">
 		<div class="breadcrumb-inner">
@@ -18,7 +21,9 @@
 		<div class="checkout-box ">
 			<div class="row">
             <form class="register-form" role="form" action="{{ route('user.checkout.store') }}" method="POST">
+            
                 @csrf
+                
 				<div class="col-md-8">
 					<div class="panel-group checkout-steps" id="accordion">
 						<!-- checkout-step-01  -->
@@ -126,7 +131,9 @@
                                             {{ $item->options->size }}
                                         </li>
                                         @endforeach
+                                        
                                      <hr>
+                                     
 										<li>
                                             @if (Session::has('coupon'))
                                             <strong>Subtotal: </strong> ${{ $cartTotal }} <br>
@@ -184,6 +191,8 @@
 		</div><!-- /.checkout-box -->
 	</div><!-- /.container -->
 </div><!-- /.body content -->
+
+
 
 <script src="{{asset('backend')}}/lib/jquery-2.2.4.min.js"></script>
 

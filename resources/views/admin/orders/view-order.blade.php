@@ -1,6 +1,9 @@
 @extends('layouts.admin-master')
-@section('orders') active @endsection
 @section('admin-content')
+
+@section('orders') active @endsection
+
+
      <!-- ########## START: MAIN PANEL ########## -->
      <div class="sl-mainpanel">
         <nav class="breadcrumb sl-breadcrumb">
@@ -137,34 +140,34 @@
                             </tr>
 
                          @foreach ($orderItems as $item)
-                            <tr>
-                                <td class="col-md-1"><img src="{{ asset($item->product->product_thambnail) }}" height="50px;" width="50px;" alt="imga"></td>
-                                <td class="col-md-3">
-                                    <div class="product-name"><strong>{{ $item->product->product_name_en }}</strong>
-                                    </div>
-                                </td>
-
-                                <td class="col-md-2">
-                                <strong>{{ $item->product->product_code }}</strong>
-                                </td>
-
-                                <td class="col-md-2">
-                                    <strong>{{ $item->color }}</strong>
+                                <tr>
+                                    <td class="col-md-1"><img src="{{ asset($item->product->product_thambnail) }}" height="50px;" width="50px;" alt="imga"></td>
+                                    <td class="col-md-3">
+                                        <div class="product-name"><strong>{{ $item->product->product_name_en }}</strong>
+                                        </div>
                                     </td>
-
-                                <td class="col-md-2">
-                                <strong>{{ $item->size }}</strong>
-                                </td>
-
-                                <td class="col-md-2">
-                                <strong>{{ $item->qty }}</strong>
-                                </td>
-
-                                <td class="col-md-1">
-                                <strong>৳{{ $item->price }} ({{ $item->price * $item->qty }})</strong>
-
-                                </td>
-                            </tr>
+    
+                                    <td class="col-md-2">
+                                    <strong>{{ $item->product->product_code }}</strong>
+                                    </td>
+    
+                                    <td class="col-md-2">
+                                        <strong>{{ $item->color }}</strong>
+                                        </td>
+    
+                                    <td class="col-md-2">
+                                    <strong>{{ $item->size }}</strong>
+                                    </td>
+    
+                                    <td class="col-md-2">
+                                    <strong>{{ $item->qty }}</strong>
+                                    </td>
+    
+                                    <td class="col-md-1">
+                                    <strong>৳{{ $item->price }} ({{ $item->price * $item->qty }})</strong>
+    
+                                    </td>
+                                </tr>
                          @endforeach
                         </tbody>
                     </table>

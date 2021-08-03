@@ -1,7 +1,9 @@
 @extends('layouts.admin-master')
 @section('admin-content')
+
 @section('permission') active show-sub @endsection
 @section('all-permission') active @endsection
+
 
      <!-- ########## START: MAIN PANEL ########## -->
      <div class="sl-mainpanel">
@@ -25,21 +27,24 @@
                       </tr>
                     </thead>
                     <tbody>
+                    
                       @foreach ($permissions as $item)
-                      <tr>
-
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->role->name }}</td>
-                        <td>
-                          <a href="{{ route('permission.edit',$item->id) }}" class="btn btn-sm btn-primary" title="edit data"> <i class="fa fa-pencil"></i></a>
-                        <form action="{{ route('permission.destroy',$item->id) }}" method="POST">
-                            @csrf
-                            @method('delete')
-                          <button class="btn btn-sm btn-danger"  title="delete data"><i class="fa fa-trash"></i></button>
-                        </form>
-                        </td>
-                      </tr>
+                              <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->role->name }}</td>
+                                    <td>
+                                      <a href="{{ route('permission.edit',$item->id) }}" class="btn btn-sm btn-primary" title="edit data"> <i class="fa fa-pencil"></i></a>
+                                      
+                                    <form action="{{ route('permission.destroy',$item->id) }}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                      <button class="btn btn-sm btn-danger"  title="delete data"><i class="fa fa-trash"></i></button>
+                                    </form>
+                                    
+                                    </td>
+                              </tr>
                       @endforeach
+                      
                     </tbody>
                   </table>
                 </div><!-- table-wrapper -->

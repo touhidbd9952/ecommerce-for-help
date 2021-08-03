@@ -1,7 +1,11 @@
 @extends('layouts.admin-master')
+@section('admin-content')
+
 @section('orders') active show-sub @endsection
 @section('cancel-orders') active @endsection
-@section('admin-content')
+
+
+
      <!-- ########## START: MAIN PANEL ########## -->
      <div class="sl-mainpanel">
         <nav class="breadcrumb sl-breadcrumb">
@@ -27,20 +31,22 @@
                       </tr>
                     </thead>
                     <tbody>
+                    
                       @foreach ($orders as $order)
-                    <tr>
-                        <td>{{ $order->order_date }}</td>
-                        <td>{{ $order->invoice_no }}</td>
-                        <td>{{ $order->amount }}Tk</td>
-                        <td>{{ $order->transaction_id }}</td>
-                        <td>
-                            <span class="badge badge-pill badge-primary">{{ $order->status }}</span>
-                        </td>
-                        <td>
-                          <a href="{{ url('admin/orders-view/'.$order->id) }}" class="btn btn-sm btn-primary" title="view data"> <i class="fa fa-eye"></i></a>
-                        </td>
-                    </tr>
+                            <tr>
+                                    <td>{{ $order->order_date }}</td>
+                                    <td>{{ $order->invoice_no }}</td>
+                                    <td>{{ $order->amount }}Tk</td>
+                                    <td>{{ $order->transaction_id }}</td>
+                                    <td>
+                                        <span class="badge badge-pill badge-primary">{{ $order->status }}</span>
+                                    </td>
+                                    <td>
+                                      <a href="{{ url('admin/orders-view/'.$order->id) }}" class="btn btn-sm btn-primary" title="view data"> <i class="fa fa-eye"></i></a>
+                                    </td>
+                            </tr>
                       @endforeach
+                      
                     </tbody>
                   </table>
                 </div><!-- table-wrapper -->
@@ -50,4 +56,6 @@
           </div>
         </div>
     </div>
+    
+    
 @endsection

@@ -1,7 +1,9 @@
 @extends('layouts.admin-master')
 @section('admin-content')
+
 @section('shipping') active show-sub @endsection
 @section('add-division') active @endsection
+
 
      <!-- ########## START: MAIN PANEL ########## -->
      <div class="sl-mainpanel">
@@ -26,14 +28,14 @@
                     </thead>
                     <tbody>
                       @foreach ($divisions as $item)
-                      <tr>
-                        <td>{{ $item->division_name }}</td>
-                        <td>
-                          <a href="{{ url('admin/division-edit/'.$item->id) }}" class="btn btn-sm btn-primary" title="edit data"> <i class="fa fa-pencil"></i></a>
-
-                          <a href="{{ url('admin/division-delete/'.$item->id) }}" class="btn btn-sm btn-danger" id="delete" title="delete data"><i class="fa fa-trash"></i></a>
-                        </td>
-                      </tr>
+                              <tr>
+                                    <td>{{ $item->division_name }}</td>
+                                    <td>
+                                      <a href="{{ url('admin/division-edit/'.$item->id) }}" class="btn btn-sm btn-primary" title="edit data"> <i class="fa fa-pencil"></i></a>
+            
+                                      <a href="{{ url('admin/division-delete/'.$item->id) }}" class="btn btn-sm btn-danger" id="delete" title="delete data"><i class="fa fa-trash"></i></a>
+                                    </td>
+                              </tr>
                       @endforeach
                     </tbody>
                   </table>
@@ -46,7 +48,9 @@
                 <div class="card-header">Add New Division</div>
                   <div class="card-body">
                 <form action="{{ route('division-store') }}" method="POST">
+                
                     @csrf
+                    
                     <div class="form-group">
                       <label class="form-control-label">Division Name: <span class="tx-danger">*</span></label>
                       <input class="form-control" type="text" name="division_name" value="{{ old('division_name') }}" placeholder="Enter division_name">

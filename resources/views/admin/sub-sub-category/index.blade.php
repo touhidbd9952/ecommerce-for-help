@@ -1,7 +1,9 @@
 @extends('layouts.admin-master')
 @section('admin-content')
+
 @section('categories') active show-sub @endsection
 @section('subsubcategory') active @endsection
+
 
      <!-- ########## START: MAIN PANEL ########## -->
      <div class="sl-mainpanel">
@@ -28,23 +30,25 @@
                       </tr>
                     </thead>
                     <tbody>
+                    
                       @foreach ($subsubcategories as $item)
-                      <tr>
-                        <td>
-                       {{ $item->category->category_name_en }}
-                        </td>
-                        <td>
-                            {{ $item->subcategory->subcategory_name_en }}
-                             </td>
-                        <td>{{ $item->subsubcategory_name_en }}</td>
-                        <td>{{ $item->subsubcategory_name_bn }}</td>
-                        <td>
-                          <a href="{{ url('admin/sub-sub-category-edit/'.$item->id) }}" class="btn btn-sm btn-primary" title="edit data"> <i class="fa fa-pencil"></i></a>
-
-                          <a href="{{ url('admin/sub-sub-category-delete/'.$item->id) }}" class="btn btn-sm btn-danger" id="delete" title="delete data"><i class="fa fa-trash"></i></a>
-                        </td>
-                      </tr>
+                              <tr>
+                                    <td>
+                                   {{ $item->category->category_name_en }}
+                                    </td>
+                                    <td>
+                                        {{ $item->subcategory->subcategory_name_en }}
+                                         </td>
+                                    <td>{{ $item->subsubcategory_name_en }}</td>
+                                    <td>{{ $item->subsubcategory_name_bn }}</td>
+                                    <td>
+                                      <a href="{{ url('admin/sub-sub-category-edit/'.$item->id) }}" class="btn btn-sm btn-primary" title="edit data"> <i class="fa fa-pencil"></i></a>
+            
+                                      <a href="{{ url('admin/sub-sub-category-delete/'.$item->id) }}" class="btn btn-sm btn-danger" id="delete" title="delete data"><i class="fa fa-trash"></i></a>
+                                    </td>
+                              </tr>
                       @endforeach
+                      
                     </tbody>
                   </table>
                 </div><!-- table-wrapper -->

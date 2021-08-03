@@ -1,11 +1,13 @@
 @extends('layouts.admin-master')
 @section('admin-content')
+
 @section('products')
     active show-sub
 @endsection
 @section('add-product')
     active
 @endsection
+
 
      <!-- ########## START: MAIN PANEL ########## -->
      <div class="sl-mainpanel">
@@ -17,8 +19,11 @@
         <div class="sl-pagebody">
             <div class="card pd-20 pd-sm-40">
               <h6 class="card-body-title">Add product</h6>
+              
               <form action="{{ route('store-product') }}" method="POST" enctype="multipart/form-data">
+              
                 @csrf
+                
             <div class="row row-sm">
                     <div class="col-md-4">
                         <div class="form-group">

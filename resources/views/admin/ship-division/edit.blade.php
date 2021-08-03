@@ -1,7 +1,9 @@
 @extends('layouts.admin-master')
 @section('admin-content')
+
 @section('shipping') active show-sub @endsection
 @section('add-division') active @endsection
+
 
      <!-- ########## START: MAIN PANEL ########## -->
      <div class="sl-mainpanel">
@@ -16,9 +18,13 @@
               <div class="card">
                 <div class="card-header">Edit Division</div>
                   <div class="card-body">
+                  
                 <form action="{{ route('division-update') }}" method="POST">
+                
                     @csrf
+                    
                     <input type="hidden" name="id" value="{{ $division->id }}">
+                    
                     <div class="form-group">
                       <label class="form-control-label">Division Name: <span class="tx-danger">*</span></label>
                       <input class="form-control" type="text" name="division_name" value="{{ $division->division_name }}" placeholder="Enter division_name">

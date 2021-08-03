@@ -1,5 +1,7 @@
 @extends('layouts.admin-master')
 @section('admin-content')
+
+
      <!-- ########## START: MAIN PANEL ########## -->
      <div class="sl-mainpanel">
         <nav class="breadcrumb sl-breadcrumb">
@@ -10,13 +12,18 @@
         <div class="sl-pagebody">
           <div class="row row-sm">
                 <div class="col-md-4 ">
+                
                     @include('admin.profile.inc.sidebar')
+                    
                 </div>
                 <div class="col-md-8 mt-1">
                   <div class="card" >
                         <div class="card-body">
+                        
                             <form action="{{ route('update-data') }}" method="POST">
+                            
                                 @csrf
+                                
                                   <div class="form-group">
                                     <label for="exampleInputEmail1">Name</label>
                                     <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ Auth::user()->name }}">

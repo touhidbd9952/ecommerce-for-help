@@ -1,7 +1,9 @@
 @extends('layouts.admin-master')
 @section('admin-content')
+
 @section('categories') active show-sub @endsection
 @section('subcategory') active @endsection
+
 
      <!-- ########## START: MAIN PANEL ########## -->
      <div class="sl-mainpanel">
@@ -28,18 +30,18 @@
                     </thead>
                     <tbody>
                       @foreach ($subcategories as $item)
-                      <tr>
-                        <td>
-                       {{ $item->category->category_name_en }}
-                        </td>
-                        <td>{{ $item->subcategory_name_en }}</td>
-                        <td>{{ $item->subcategory_name_bn }}</td>
-                        <td>
-                          <a href="{{ url('admin/sub-category-edit/'.$item->id) }}" class="btn btn-sm btn-primary" title="edit data"> <i class="fa fa-pencil"></i></a>
-
-                          <a href="{{ url('admin/sub-category-delete/'.$item->id) }}" class="btn btn-sm btn-danger" id="delete" title="delete data"><i class="fa fa-trash"></i></a>
-                        </td>
-                      </tr>
+                              <tr>
+                                    <td>
+                                   {{ $item->category->category_name_en }}
+                                    </td>
+                                    <td>{{ $item->subcategory_name_en }}</td>
+                                    <td>{{ $item->subcategory_name_bn }}</td>
+                                    <td>
+                                      <a href="{{ url('admin/sub-category-edit/'.$item->id) }}" class="btn btn-sm btn-primary" title="edit data"> <i class="fa fa-pencil"></i></a>
+            
+                                      <a href="{{ url('admin/sub-category-delete/'.$item->id) }}" class="btn btn-sm btn-danger" id="delete" title="delete data"><i class="fa fa-trash"></i></a>
+                                    </td>
+                              </tr>
                       @endforeach
                     </tbody>
                   </table>
@@ -51,8 +53,11 @@
               <div class="card">
                 <div class="card-header">Add New Sub-Category</div>
                   <div class="card-body">
+                  
                 <form action="{{ route('subcategory-store') }}" method="POST">
+                
                     @csrf
+                    
                     <div class="form-group">
                       <label class="form-control-label">Select Category: <span class="tx-danger">*</span></label>
                       <select class="form-control select2-show-search" data-placeholder="Select One" name="category_id">

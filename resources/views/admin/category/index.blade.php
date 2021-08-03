@@ -1,7 +1,9 @@
 @extends('layouts.admin-master')
 @section('admin-content')
+
 @section('categories') active show-sub @endsection
 @section('add-category') active @endsection
+
 
      <!-- ########## START: MAIN PANEL ########## -->
      <div class="sl-mainpanel">
@@ -27,6 +29,7 @@
                       </tr>
                     </thead>
                     <tbody>
+                    
                       @foreach ($categories as $item)
                       <tr>
                         <td>
@@ -41,6 +44,7 @@
                         </td>
                       </tr>
                       @endforeach
+                      
                     </tbody>
                   </table>
                 </div><!-- table-wrapper -->
@@ -51,8 +55,11 @@
               <div class="card">
                 <div class="card-header">Add New Category</div>
                   <div class="card-body">
+                  
                 <form action="{{ route('category-store') }}" method="POST">
+                
                     @csrf
+                    
                     <div class="form-group">
                       <label class="form-control-label">Category Icon: <span class="tx-danger">*</span></label>
                       <input class="form-control" type="text" name="category_icon" value="{{ old('brand_name_en') }}" placeholder="Enter category_icon">
@@ -81,6 +88,7 @@
                       <button type="submit" class="btn btn-info">Category Add</button>
                     </div><!-- form-layout-footer -->
                   </form>
+                  
                   </div>
               </div>
             </div>

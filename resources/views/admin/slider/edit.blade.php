@@ -1,8 +1,11 @@
 @extends('layouts.admin-master')
+@section('admin-content')
+
 @section('sliders')
     active
 @endsection
-@section('admin-content')
+
+
      <!-- ########## START: MAIN PANEL ########## -->
      <div class="sl-mainpanel">
         <nav class="breadcrumb sl-breadcrumb">
@@ -12,10 +15,14 @@
         <div class="sl-pagebody">
             <div class="card pd-20 pd-sm-40">
               <h6 class="card-body-title">Update Slider</h6>
+              
               <form action="{{ route('update-slider') }}" method="POST" enctype="multipart/form-data">
+              
                 @csrf
+                
                 <input type="hidden" name="old_image" value="{{ $slider->image }}">
                 <input type="hidden" name="id" value="{{ $slider->id }}">
+                
             <div class="row row-sm">
                 @if ($slider->title_en == NULL)
                 @else

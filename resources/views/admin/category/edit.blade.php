@@ -1,11 +1,13 @@
 @extends('layouts.admin-master')
+@section('admin-content')
+
 @section('categories')
     active show-sub
 @endsection
 @section('add-category')
     active 
 @endsection
-@section('admin-content')
+
      <!-- ########## START: MAIN PANEL ########## -->
      <div class="sl-mainpanel">
         <nav class="breadcrumb sl-breadcrumb">
@@ -16,9 +18,13 @@
         <div class="sl-pagebody">
             <div class="card pd-20 pd-sm-40">
               <h6 class="card-body-title">Update Category</h6>
+              
               <form action="{{ route('update-category') }}" method="POST">
+              
                 @csrf
+                
                 <input type="hidden" name="id" value="{{ $category->id }}">
+                
             <div class="row row-sm">
                     <div class="col-md-4">
                         <div class="form-group">
@@ -54,6 +60,7 @@
                 <button class="btn btn-info mg-r-5" type="submit" style="cursor: pointer;">Update Catgory</button>
               </div><!-- form-layout-footer -->
             </form>
+            
             </div>
             </div><!-- row --> 
 

@@ -15,7 +15,8 @@ class IndexController extends Controller
 {
     // index page
 
-    public function index(){
+    public function index()
+	{
         $categories = Category::orderBy('category_name_en','ASC')->get();
         $sliders = Slider::where('status',1)->orderBy('id','DESC')->limit(5)->get();
         $proudcts = Product::where('status',1)->orderBy('id','DESC')->get();
@@ -33,8 +34,11 @@ class IndexController extends Controller
 
         return view('fontend.index',compact('categories','sliders','proudcts','featureds','special_offers','special_deals','skip_category_0','skip_product_0','skip_category_1','skip_product_1','skip_category_2','skip_product_2','skip_product_0','skip_product_brand_0','skip_brand_0'));
     }
+	
+	
     //product details
-    public function singleProduct($product_id,$slug){
+    public function singleProduct($product_id,$slug)
+	{
         $product = Product::findOrFail($product_id);
 
         $color_en = $product->product_color_en;
@@ -56,49 +60,69 @@ class IndexController extends Controller
         $reviewProducts = ProductReview::with('user')->where('product_id',$product_id)->where('status','approve')->latest()->get();
         $rating = ProductReview::where('product_id',$product_id)->where('status','approve')->avg('rating');
         $avgRating = number_format($rating,1);
+		
         return view('fontend.single-product',compact('product','multiImgs','product_color_en','product_color_bn','product_size_en','product_size_bn','relatedProducts','reviewProducts','avgRating'));
     }
 
     //tag wise product
-    public function tagWiseProduct($tag){
+    public function tagWiseProduct($tag)
+	{
         $products = Product::where('status',1)->where('product_tags_en',$tag)->orWhere('product_tags_bn',$tag)->orderBy('id','DESC')->paginate(1);
         $categories = Category::orderBy('category_name_en','ASC')->get();
+		
         return view('fontend.tag-product',compact('products','categories'));
     }
 
     //subcategory wise product show
-    public function subCatWiseProduct(Request $request,$subcat_id,$slug){
+    public function subCatWiseProduct(Request $request,$subcat_id,$slug)
+	{
 
         $categories = Category::orderBy('category_name_en','ASC')->get();
 
         $sort = '';
-        if ($request->sort != null) {
+        if ($request->sort != null) 
+		{
              $sort = $request->sort;
         }
 
-        if ($subcat_id == null) {
+        if ($subcat_id == null) 
+		{
             return view('errors.404');
-        }else {
-            if ($sort == 'priceLowtoHigh') {
+        }
+		else 
+		{
+            if ($sort == 'priceLowtoHigh') 
+			{
                 $products = Product::where(['status' => 1,'subcategory_id' => $subcat_id])->orderBy('selling_price','ASC')->paginate(12);
-            }elseif ($sort == 'priceHightoLow') {
+            }
+			elseif ($sort == 'priceHightoLow') 
+			{
                 $products = Product::where(['status' => 1,'subcategory_id' => $subcat_id])->orderBy('selling_price','DESC')->paginate(12);
-            }elseif ($sort == 'nameAtoZ') {
+            }
+			elseif ($sort == 'nameAtoZ') 
+			{
                 $products = Product::where(['status' => 1,'subcategory_id' => $subcat_id])->orderBy('product_name_en','ASC')->paginate(12);
-            }elseif ($sort == 'nameZtoA') {
+            }
+			elseif ($sort == 'nameZtoA') 
+			{
                 $products = Product::where(['status' => 1,'subcategory_id' => $subcat_id])->orderBy('product_name_en','DESC')->paginate(12);
-            }else {
+            }
+			else 
+			{
                 $products = Product::where('status',1)->where('subcategory_id',$subcat_id)->orderBy('id','DESC')->paginate(3);
             }
         }
+		
         $subCatId = $subcat_id;
         $subCatSlug = $slug;
         $route = 'subcategory/product';
 
         //loadmore product with ajax
-        if ($request->ajax()) {
+        if ($request->ajax())
+		 {
             $grid_view = view('fontend.inc.grid_view_product',compact('products'))->render();
             $list_view = view('fontend.inc.list_view_product',compact('products'))->render();
+			
             return response()->json(['grid_view' => $grid_view,'list_view'=>$list_view]);
         }
 
@@ -106,14 +130,17 @@ class IndexController extends Controller
     }
 
     //subsubcatgory wise product show
-    public function subSubCatWiseProduct($subsubcat_id,$slug){
+    public function subSubCatWiseProduct($subsubcat_id,$slug)
+	{
         $products = Product::where('status',1)->where('subsubcategory_id',$subsubcat_id)->orderBy('id','DESC')->paginate(1);
         $categories = Category::orderBy('category_name_en','ASC')->get();
+		
         return view('fontend.sub-sub-category-product',compact('products','categories'));
     }
 
     // =========================== Product view with ajax================
-    public function productViewAjax($product_id){
+    public function productViewAjax($product_id)
+	{
             $product = Product::with('category','brand')->findOrFail($product_id);
 
             $color = $product->product_color_en;
@@ -128,4 +155,6 @@ class IndexController extends Controller
         ));
 
     }
+	
+	
 }

@@ -29,12 +29,15 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
-        protected function redirectTo(){
-            if (Auth()->user()->role_id !=2 ) {
+        protected function redirectTo()
+		{
+            if (Auth()->user()->role_id !=2 ) 
+			{
                 return route('admin.dashboard');
-
-            }elseif (Auth()->user()->role_id ==2 ) {
-            return route('user.dashboard');
+            }
+			elseif (Auth()->user()->role_id ==2 ) 
+			{
+            	return route('user.dashboard');
             }
         }
 
@@ -50,25 +53,28 @@ class LoginController extends Controller
 
     /// laravel socialite login
     //google login
-    public function redirectToGoogle(){
+    public function redirectToGoogle()
+	{
         return Socialite::driver('google')->redirect();
     }
 
     //google callback
-    public function handleGoogleCallback(){
+    public function handleGoogleCallback()
+	{
         $user = Socialite::driver('google')->user();
         $this->registerOrLoginUser($user);
         return redirect()->route('user.dashboard');
     }
 
      //facebook login
-     public function redirectToFacebook(){
+     public function redirectToFacebook()
+	 {
         return Socialite::driver('facebook')->redirect();
-
     }
 
      //facebook callback
-     public function handleFacebookCallback(){
+     public function handleFacebookCallback()
+	 {
         $user = Socialite::driver('facebook')->user();
         $this->registerOrLoginUser($user);
         return redirect()->route('user.dashboard');
@@ -76,7 +82,8 @@ class LoginController extends Controller
 
 
     //socialite login
-    protected function registerOrLoginUser($data){
+    protected function registerOrLoginUser($data)
+	{
             $user = User::where('email','=',$data->email)->first();
             if (!$user) {
                 $user = new User();

@@ -102,7 +102,8 @@ class SslCommerzPaymentController extends Controller
               ]);
 
               $order_id = \Illuminate\Support\Facades\DB::getPdo()->lastInsertId();
-
+			
+			//insert data in orderitems table
               $carts = Cart::content();
             foreach ($carts as $cart ) {
                 OrderItem::insert([
@@ -124,10 +125,12 @@ class SslCommerzPaymentController extends Controller
             $post_data['value_d'] = "ref004";
 
         $sslc = new SslCommerzNotification();
+		
         # initiate(Transaction Data , false: Redirect to SSLCOMMERZ gateway/ true: Show all the Payement gateway here )
         $payment_options = $sslc->makePayment($post_data, 'hosted');
 
-        if (!is_array($payment_options)) {
+        if (!is_array($payment_options)) 
+		{
             print_r($payment_options);
             $payment_options = array();
         }
@@ -211,7 +214,8 @@ class SslCommerzPaymentController extends Controller
             ]);
 
             $order_id = \Illuminate\Support\Facades\DB::getPdo()->lastInsertId();
-
+			
+			//insert data in orderitems table
             $carts = Cart::content();
           foreach ($carts as $cart ) {
               OrderItem::insert([
@@ -236,7 +240,8 @@ class SslCommerzPaymentController extends Controller
         # initiate(Transaction Data , false: Redirect to SSLCOMMERZ gateway/ true: Show all the Payement gateway here )
         $payment_options = $sslc->makePayment($post_data, 'checkout', 'json');
 
-        if (!is_array($payment_options)) {
+        if (!is_array($payment_options)) 
+		{
             print_r($payment_options);
             $payment_options = array();
         }
@@ -258,10 +263,12 @@ class SslCommerzPaymentController extends Controller
             ->where('transaction_id', $tran_id)
             ->select('transaction_id', 'status', 'currency', 'amount')->first();
 
-        if ($order_detials->status == 'Pending') {
+        if ($order_detials->status == 'Pending') 
+		{
             $validation = $sslc->orderValidate($tran_id, $amount, $currency, $request->all());
 
-            if ($validation == TRUE) {
+            if ($validation == TRUE) 
+			{
                 /*
                 That means IPN did not work or IPN URL was not set in your merchant panel. Here you need to update order status
                 in order table as Processing or Complete.
@@ -283,14 +290,18 @@ class SslCommerzPaymentController extends Controller
 
                 //end send email
 
-                if (Session::has('coupon')) {
+                if (Session::has('coupon')) 
+				{
                     Session::forget('coupon');
                 }
+				
                 Cart::destroy();
+				
                 $notification=array(
                     'message'=>'Your Order Place Success',
                     'alert-type'=>'success'
                 );
+				
                 return Redirect()->route('user.dashboard')->with($notification);
 
             } else {

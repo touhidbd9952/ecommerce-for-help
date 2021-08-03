@@ -12,14 +12,16 @@ class ReviewController extends Controller
 {
 
     //create
-    public function create($product_id){
+    public function create($product_id)
+	{
         $id = $product_id;
         return view('user.order.review',compact('id'));
     }
 
 
     //store review
-    public function store(Request $request){
+    public function store(Request $request)
+	{
         $request->validate([
             'rating' => 'required',
             'comment' => 'required',
@@ -38,6 +40,7 @@ class ReviewController extends Controller
             'message'=>'Review Done',
             'alert-type'=>'success'
         );
+		
         return Redirect()->back()->with($notification);
     }
 }

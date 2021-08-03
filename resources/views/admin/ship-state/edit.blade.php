@@ -1,8 +1,9 @@
-
 @extends('layouts.admin-master')
 @section('admin-content')
+
 @section('shipping') active show-sub @endsection
 @section('add-state') active @endsection
+
 
      <!-- ########## START: MAIN PANEL ########## -->
      <div class="sl-mainpanel">
@@ -17,9 +18,13 @@
               <div class="card">
                 <div class="card-header">Edit state</div>
                   <div class="card-body">
+                  
                 <form action="{{ route('state-update') }}" method="POST">
+                
                     @csrf
+                    
                     <input type="hidden" name="id" value="{{ $state->id }}">
+                    
                     <div class="form-group">
                         <label class="form-control-label">Select Division: <span class="tx-danger">*</span></label>
                         <select class="form-control select2-show-search" data-placeholder="Select One" name="division_id">

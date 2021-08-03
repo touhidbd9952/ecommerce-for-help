@@ -3,6 +3,8 @@
     active
 @endsection
 @section('admin-content')
+
+
      <!-- ########## START: MAIN PANEL ########## -->
      <div class="sl-mainpanel">
         <nav class="breadcrumb sl-breadcrumb">
@@ -13,10 +15,14 @@
         <div class="sl-pagebody">
             <div class="card pd-20 pd-sm-40">
               <h6 class="card-body-title">Update Brand</h6>
+              
               <form action="{{ route('update-brand') }}" method="POST" enctype="multipart/form-data">
+              
                 @csrf
+                
                 <input type="hidden" name="old_image" value="{{ $brand->brand_image }}">
                 <input type="hidden" name="id" value="{{ $brand->id }}">
+                
             <div class="row row-sm">
                     <div class="col-md-4">
                         <div class="form-group">
@@ -51,6 +57,7 @@
                 <button class="btn btn-info mg-r-5" type="submit" style="cursor: pointer;">Update Brand</button>
               </div><!-- form-layout-footer -->
             </form>
+            
             </div>
             </div><!-- row --> 
 

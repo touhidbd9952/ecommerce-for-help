@@ -1,7 +1,9 @@
 @extends('layouts.admin-master')
 @section('admin-content')
+
 @section('role') active show-sub @endsection
 @section('all-role') active @endsection
+
 
      <!-- ########## START: MAIN PANEL ########## -->
      <div class="sl-mainpanel">
@@ -17,9 +19,13 @@
               <div class="card">
                 <div class="card-header">Edit role</div>
                   <div class="card-body">
+                  
                 <form action="{{ route('role.update',$role->id) }}" method="POST" >
+                
                     @csrf
+                    
                     @method('put')
+                    
                     <div class="form-group">
                       <label class="form-control-label">Role Name: <span class="tx-danger">*</span></label>
                       <input class="form-control" type="text" name="name" value="{{ $role->name }}" placeholder="Enter name">

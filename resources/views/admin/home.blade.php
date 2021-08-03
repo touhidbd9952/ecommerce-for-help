@@ -1,5 +1,7 @@
 @extends('layouts.admin-master')
 @section('admin-content')
+
+
  <!-- ########## START: MAIN PANEL ########## -->
  <div class="sl-mainpanel">
   <nav class="breadcrumb sl-breadcrumb">
@@ -9,6 +11,7 @@
 
   <div class="sl-pagebody">
     <div class="row row-sm">
+    
       <div class="col-sm-6 col-xl-3">
         <div class="card pd-20 bg-primary">
           <div class="d-flex justify-content-between align-items-center mg-b-10">
@@ -31,6 +34,7 @@
           </div><!-- -->
         </div><!-- card -->
       </div><!-- col-3 -->
+      
       <div class="col-sm-6 col-xl-3 mg-t-20 mg-sm-t-0">
         <div class="card pd-20 bg-info">
           <div class="d-flex justify-content-between align-items-center mg-b-10">
@@ -53,6 +57,7 @@
           </div><!-- -->
         </div><!-- card -->
       </div><!-- col-3 -->
+      
       <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
         <div class="card pd-20 bg-purple">
           <div class="d-flex justify-content-between align-items-center mg-b-10">
@@ -75,6 +80,7 @@
           </div><!-- -->
         </div><!-- card -->
       </div><!-- col-3 -->
+      
       <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
         <div class="card pd-20 bg-sl-primary">
           <div class="d-flex justify-content-between align-items-center mg-b-10">
@@ -97,6 +103,7 @@
           </div><!-- -->
         </div><!-- card -->
       </div><!-- col-3 -->
+      
     </div><!-- row -->
 
 

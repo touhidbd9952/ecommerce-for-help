@@ -1,11 +1,14 @@
 @extends('layouts.admin-master')
 @section('admin-content')
+
 @section('products')
     active show-sub
 @endsection
 @section('manage-product')
     active
 @endsection
+
+
 
      <!-- ########## START: MAIN PANEL ########## -->
      <div class="sl-mainpanel">
@@ -17,9 +20,13 @@
         <div class="sl-pagebody">
             <div class="card pd-20 pd-sm-40">
               <h6 class="card-body-title">Update product</h6>
+              
               <form action="{{ route('update-product-data') }}" method="POST">
+              
                 @csrf
+                
                 <input type="hidden" name="product_id" value="{{ $product->id }}">
+                
             <div class="row row-sm">
                     <div class="col-md-4">
                         <div class="form-group">
@@ -323,7 +330,8 @@
                       </div>
                     </div>
                   </div>
-                    @endforeach
+              @endforeach
+                    
             </div>
 
             <div class="form-layout-footer">

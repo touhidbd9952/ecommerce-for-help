@@ -1,7 +1,9 @@
 @extends('layouts.admin-master')
 @section('admin-content')
+
 @section('permission') active show-sub @endsection
 @section('add-permission') active @endsection
+
 
      <!-- ########## START: MAIN PANEL ########## -->
      <div class="sl-mainpanel">
@@ -17,8 +19,11 @@
               <div class="card">
                 <div class="card-header">Add New permission</div>
                   <div class="card-body">
+                  
                 <form action="{{ route('permission.store') }}" method="POST" >
+                
                     @csrf
+                    
                     <div class="row">
                         <div class="col-md-4">
                                <div class="form-group">

@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Session;
 
 class StripeController extends Controller
 {
-    public function store(Request $request){
+    public function store(Request $request)
+	{
         if (Session::has('coupon')) {
             $total_amount = Session::get('coupon')['total_amount'];
         }else {
@@ -70,7 +71,8 @@ class StripeController extends Controller
             Mail::to($request->email)->send(new orderMail($data));
 
         //end send email
-
+		
+		//insert data in orderitems table
         $carts = Cart::content();
         foreach ($carts as $cart ) {
             OrderItem::insert([
@@ -85,11 +87,13 @@ class StripeController extends Controller
         }
 
         //product stock decrement
-        foreach($carts as $pro){
+        foreach($carts as $pro)
+		{
             Product::where('id',$pro->id)->decrement('product_qty',$pro->qty);
         }
 
-        if (Session::has('coupon')) {
+        if (Session::has('coupon')) 
+		{
             Session::forget('coupon');
         }
 
@@ -99,7 +103,11 @@ class StripeController extends Controller
             'message'=>'Your Order Place Success',
             'alert-type'=>'success'
         );
+		
         return Redirect()->route('user.dashboard')->with($notification);
 
     }
+	
+	
+	
 }

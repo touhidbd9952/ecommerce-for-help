@@ -1,5 +1,6 @@
 @extends('layouts.admin-master')
 @section('admin-content')
+
 @section('role') active show-sub @endsection
 @section('all-role') active @endsection
 
@@ -25,21 +26,22 @@
                       </tr>
                     </thead>
                     <tbody>
+                    
                       @foreach ($roles as $item)
-                      <tr>
-
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->name }}</td>
-                        <td>
-                          <a href="{{ route('role.edit',$item->id) }}" class="btn btn-sm btn-primary" title="edit data"> <i class="fa fa-pencil"></i></a>
-                        <form action="{{ route('role.destroy',$item->id) }}" method="POST">
-                            @csrf
-                            @method('delete')
-                          <button class="btn btn-sm btn-danger"  title="delete data"><i class="fa fa-trash"></i></button>
-                        </form>
-                        </td>
-                      </tr>
+                              <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->name }}</td>
+                                    <td>
+                                      <a href="{{ route('role.edit',$item->id) }}" class="btn btn-sm btn-primary" title="edit data"> <i class="fa fa-pencil"></i></a>
+                                    <form action="{{ route('role.destroy',$item->id) }}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                      <button class="btn btn-sm btn-danger"  title="delete data"><i class="fa fa-trash"></i></button>
+                                    </form>
+                                    </td>
+                              </tr>
                       @endforeach
+                      
                     </tbody>
                   </table>
                 </div><!-- table-wrapper -->

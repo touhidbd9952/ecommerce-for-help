@@ -10,7 +10,8 @@ class SearchController extends Controller
 {
 
     //search product
-    public function searchProduct(Request $request){
+    public function searchProduct(Request $request)
+	{
         $request->validate([
             'search' => 'required'
         ]);
@@ -22,12 +23,14 @@ class SearchController extends Controller
                             ->orWhere('short_descp_en',"LIKE","%".$request->search."%")
                             ->orWhere('short_descp_bn',"LIKE","%".$request->search."%")
                             ->paginate(5);
-                return view('fontend.search-result',compact('products'));
+							
+         return view('fontend.search-result',compact('products'));
     }
 
 
     //findProducts with ajax
-    public function findProducts(Request $request){
+    public function findProducts(Request $request)
+	{
         $request->validate([
             'search' => 'required'
         ]);
@@ -39,6 +42,9 @@ class SearchController extends Controller
                             ->orWhere('short_descp_en',"LIKE","%".$request->search."%")
                             ->orWhere('short_descp_bn',"LIKE","%".$request->search."%")
                             ->take(5)->get();
-                return view('fontend.search-product',compact('products'));
+							
+         return view('fontend.search-product',compact('products'));
     }
+	
+	
 }

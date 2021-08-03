@@ -1,7 +1,9 @@
 @extends('layouts.admin-master')
 @section('admin-content')
+
 @section('shipping') active show-sub @endsection
 @section('add-district') active @endsection
+
 
      <!-- ########## START: MAIN PANEL ########## -->
      <div class="sl-mainpanel">
@@ -26,17 +28,19 @@
                       </tr>
                     </thead>
                     <tbody>
+                    
                       @foreach ($districts as $item)
-                      <tr>
-                        <td>{{ $item->division->division_name }}</td>
-                        <td>{{ $item->district_name }}</td>
-                        <td>
-                          <a href="{{ url('admin/district-edit/'.$item->id) }}" class="btn btn-sm btn-primary" title="edit data"> <i class="fa fa-pencil"></i></a>
-
-                          <a href="{{ url('admin/district-delete/'.$item->id) }}" class="btn btn-sm btn-danger" id="delete" title="delete data"><i class="fa fa-trash"></i></a>
-                        </td>
-                      </tr>
+                              <tr>
+                                    <td>{{ $item->division->division_name }}</td>
+                                    <td>{{ $item->district_name }}</td>
+                                    <td>
+                                      <a href="{{ url('admin/district-edit/'.$item->id) }}" class="btn btn-sm btn-primary" title="edit data"> <i class="fa fa-pencil"></i></a>
+            
+                                      <a href="{{ url('admin/district-delete/'.$item->id) }}" class="btn btn-sm btn-danger" id="delete" title="delete data"><i class="fa fa-trash"></i></a>
+                                    </td>
+                              </tr>
                       @endforeach
+                      
                     </tbody>
                   </table>
                 </div><!-- table-wrapper -->
@@ -47,7 +51,9 @@
               <div class="card">
                 <div class="card-header">Add New district</div>
                   <div class="card-body">
+                  
                 <form action="{{ route('district-store') }}" method="POST">
+                
                     @csrf
 
                     <div class="form-group">
@@ -75,6 +81,7 @@
                       <button type="submit" class="btn btn-info">district Create</button>
                     </div><!-- form-layout-footer -->
                   </form>
+                  
                   </div>
               </div>
             </div>

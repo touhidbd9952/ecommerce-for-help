@@ -29,6 +29,7 @@ use App\Http\Controllers\User\WishlistController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+
 Route::get('/', [IndexController::class,'index']);
 
 Auth::routes();
@@ -159,6 +160,8 @@ Route::group(['prefix'=>'admin','middleware' =>['admin','auth','permission']], f
     Route::resource('subadmin', SubadminController::class);
 });
 
+
+
 // ====================================== User Routes =====================================
 Route::group(['prefix'=>'user','middleware' =>['user','auth']], function(){
     Route::get('dashboard',[UserController::class,'index'])->name('user.dashboard');
@@ -192,6 +195,8 @@ Route::group(['prefix'=>'user','middleware' =>['user','auth']], function(){
 
 });
 
+
+
 // SSLCOMMERZ Start
 Route::group(['middleware' =>['user','auth']], function(){
     Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
@@ -207,6 +212,8 @@ Route::group(['middleware' =>['user','auth']], function(){
     Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 });
 //SSLCOMMERZ END
+
+
 
 // ====================================== Fontend Routes =====================================
 Route::get('language/bangla',[LanguageController::class,'bangla'])->name('bangla.language');
@@ -240,6 +247,8 @@ Route::post('/add-to-wishlist/{product_id}',[CartController::class,'addToWishlis
 //checkout
 Route::get('user/checkout',[CartController::class,'checkoutCreate'])->name('checkout');
 
+
+
 //LARAVEL SOCIATLITE
 //login google
 Route::get('login/google',[LoginController::class,'redirectToGoogle'])->name('login.google');
@@ -248,8 +257,10 @@ Route::get('login/google/callback',[LoginController::class,'handleGoogleCallback
 Route::get('login/facebook',[LoginController::class,'redirectToFacebook'])->name('login.facebook');
 Route::get('login/facebook/callback',[LoginController::class,'handleFacebookCallback']);
 
-Route::post('order/track', [TrackingController::class,'orderTrackNow'])->name('order.track');
+
 //Order Track
+Route::post('order/track', [TrackingController::class,'orderTrackNow'])->name('order.track');
+
  //search product
  Route::get('/search-products',[SearchController::class,'searchProduct'])->name('search.product');
  Route::post('/find-products',[SearchController::class,'findProducts']);

@@ -1,7 +1,9 @@
 @extends('layouts.admin-master')
 @section('admin-content')
+
 @section('shipping') active show-sub @endsection
 @section('add-district') active @endsection
+
 
      <!-- ########## START: MAIN PANEL ########## -->
      <div class="sl-mainpanel">
@@ -16,15 +18,19 @@
               <div class="card">
                 <div class="card-header">Edit district</div>
                   <div class="card-body">
+                  
                 <form action="{{ route('district-update') }}" method="POST">
+                
                     @csrf
+                    
                     <input type="hidden" name="id" value="{{ $district->id }}">
+                    
                     <div class="form-group">
                         <label class="form-control-label">Select Division: <span class="tx-danger">*</span></label>
                         <select class="form-control select2-show-search" data-placeholder="Select One" name="division_id">
                           <option label="Choose one"></option>
                           @foreach ($divisions as $division)
-                          <option value="{{ $division->id }}"{{ $division->id == $district->division_id ? 'selected':'' }} >{{ ucwords($division->division_name) }}</option>
+                          <option value="{{ $division->id }}"  {{ $division->id == $district->division_id ? 'selected':'' }} >{{ ucwords($division->division_name) }}</option>
                           @endforeach
                         </select>
                         @error('division_id')

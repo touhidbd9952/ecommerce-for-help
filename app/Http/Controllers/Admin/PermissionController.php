@@ -17,6 +17,7 @@ class PermissionController extends Controller
     public function index()
     {
         $permissions = Permission::with('role')->get();
+		
         return view('admin.permission.index',compact('permissions'));
     }
 
@@ -28,6 +29,7 @@ class PermissionController extends Controller
     public function create()
     {
         $roles = Role::where('id','!=',2)->get();
+		
         return view('admin.permission.create',compact('roles'));
     }
 
@@ -39,16 +41,18 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
             'role_id' => 'required|numeric|unique:permissions,role_id'
         ]);
-
+		
+		//save all data
         Permission::create($request->all());
+		
         $notification=array(
             'message'=>'permission Created Success',
             'alert-type'=>'success'
         );
+		
         return Redirect()->route('permission.index')->with($notification);
     }
 
@@ -72,7 +76,9 @@ class PermissionController extends Controller
     public function edit($id)
     {
         $permission = Permission::find($id);
+		
         $roles = Role::where('id','!=',2)->get();
+		
         return view('admin.permission.edit',compact('permission','roles'));
     }
 
@@ -88,12 +94,15 @@ class PermissionController extends Controller
         $request->validate([
             'role_id' => 'required|exists:permissions,role_id'
         ]);
-
+		
+		//update all data
         Permission::findOrFail($id)->update($request->all());
+		
         $notification=array(
             'message'=>'permission Update Success',
             'alert-type'=>'success'
         );
+		
         return Redirect()->route('permission.index')->with($notification);
     }
 
@@ -106,11 +115,15 @@ class PermissionController extends Controller
     public function destroy($id)
     {
         permission::findOrFail($id)->delete();
+		
         $notification=array(
             'message'=>'permission Delete Success',
             'alert-type'=>'success'
         );
+		
         return Redirect()->back()->with($notification);
-
     }
+	
+	
+	
 }

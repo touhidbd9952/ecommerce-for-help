@@ -1,8 +1,11 @@
 @extends('layouts.admin-master')
+@section('admin-content')
+
 @section('reports')
     active
 @endsection
-@section('admin-content')
+
+
      <!-- ########## START: MAIN PANEL ########## -->
      <div class="sl-mainpanel">
         <nav class="breadcrumb sl-breadcrumb">
@@ -17,8 +20,11 @@
               <div class="card">
                 <div class="card-header">Search By Date</div>
                   <div class="card-body">
+                  
                 <form action="{{ route('search-by-date') }}" method="POST">
+                
                     @csrf
+                    
                     <div class="form-group">
                       <label class="form-control-label">Select Date: <span class="tx-danger">*</span></label>
                       <input class="form-control" type="date" name="date">
@@ -40,7 +46,9 @@
                   <div class="card-header">Search By Month</div>
                     <div class="card-body">
                   <form action="{{ route('search-by-month') }}" method="POST" >
+                  
                       @csrf
+                      
                       <div class="form-group">
                         <label class="form-control-label">Select Month: <span class="tx-danger">*</span></label>
                         <select class="form-control select2" name="month_name" data-placeholder="Choose one" data-validation="required">
@@ -90,8 +98,11 @@
                 <div class="card">
                   <div class="card-header">Search By Year</div>
                     <div class="card-body">
+                    
                   <form action="{{ route('search-by-year') }}" method="POST" >
+                  
                       @csrf
+                      
                       <div class="form-group">
                         <label class="form-control-label">Select Year: <span class="tx-danger">*</span></label>
                         <select class="form-control select2" name="year" data-placeholder="Choose one" data-validation="required">

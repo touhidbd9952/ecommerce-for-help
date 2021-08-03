@@ -3,6 +3,8 @@
     active
 @endsection
 @section('admin-content')
+
+
      <!-- ########## START: MAIN PANEL ########## -->
      <div class="sl-mainpanel">
         <nav class="breadcrumb sl-breadcrumb">
@@ -27,10 +29,11 @@
                       </tr>
                     </thead>
                     <tbody>
+                    
                       @foreach ($brands as $item)
                       <tr>
                         <td>
-                          <img src="{{ asset($item->brand_image) }}" alt="" style="width: 80px;">
+                          	<img src="{{ asset($item->brand_image) }}" alt="" style="width: 80px;">
                         </td>
                         <td>{{ $item->brand_name_en }}</td>
                         <td>{{ $item->brand_name_bn }}</td>
@@ -41,6 +44,7 @@
                         </td>
                       </tr>
                       @endforeach
+                      
                     </tbody>
                   </table>
                 </div><!-- table-wrapper -->
@@ -52,7 +56,9 @@
                 <div class="card-header">Add New Brand</div>
                   <div class="card-body">
                 <form action="{{ route('brand-store') }}" method="POST" enctype="multipart/form-data">
+                
                     @csrf
+                    
                     <div class="form-group">
                       <label class="form-control-label">Brand Name English: <span class="tx-danger">*</span></label>
                       <input class="form-control" type="text" name="brand_name_en" value="{{ old('brand_name_en') }}" placeholder="Enter brand_name_en">
@@ -80,6 +86,7 @@
                       <button type="submit" class="btn btn-info">Add New</button>
                     </div><!-- form-layout-footer -->
                   </form>
+                  
                   </div>
               </div>
             </div>
@@ -88,4 +95,6 @@
 
 
     </div>
+    
+    
 @endsection

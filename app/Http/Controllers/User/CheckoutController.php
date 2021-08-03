@@ -12,18 +12,23 @@ use Illuminate\Support\Facades\Session;
 class CheckoutController extends Controller
 {
     //
-        public function getDistrictWithAjax($division_id){
+        public function getDistrictWithAjax($division_id)
+		{
             $ship = ShipDistrict::where('division_id',$division_id)->orderBy('district_name','ASC')->get();
+			
             return json_encode($ship);
-     }
+    	 }
 
     //  get state with ajax
-    public function getStateWithAjax($district_id){
+    public function getStateWithAjax($district_id)
+	{
         $ship = ShipState::where('district_id',$district_id)->orderBy('state_name','ASC')->get();
+		
         return json_encode($ship);
     }
 
-    public function storeCheckout(Request $request){
+    public function storeCheckout(Request $request)
+	{
         $data = array();
         $data['shipping_name'] = $request->shipping_name;
         $data['shipping_email'] = $request->shipping_email;
@@ -35,6 +40,7 @@ class CheckoutController extends Controller
         $data['notes'] = $request->notes;
         $cartTotal = Cart::total();
         $carts = Cart::content();
+		
         if (Session::has('coupon')) {
             $total_amount = Session::get('coupon')['total_amount'];
         }else {
@@ -51,6 +57,11 @@ class CheckoutController extends Controller
         {
             return 'handcash';
         }
+		
+		
     }
+	
+	
+	
 
 }

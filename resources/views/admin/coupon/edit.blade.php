@@ -1,8 +1,11 @@
 @extends('layouts.admin-master')
+@section('admin-content')
+
 @section('coupon')
     active
 @endsection
-@section('admin-content')
+
+
      <!-- ########## START: MAIN PANEL ########## -->
      <div class="sl-mainpanel">
         <nav class="breadcrumb sl-breadcrumb">
@@ -16,9 +19,13 @@
               <div class="card">
                 <div class="card-header">Edit Coupon</div>
                   <div class="card-body">
+                  
                 <form action="{{ route('coupon-update') }}" method="POST">
+                
                     @csrf
+                    
                     <input type="hidden" name="id" value="{{ $coupon->id }}">
+                    
                     <div class="form-group">
                       <label class="form-control-label">Coupon Name: <span class="tx-danger">*</span></label>
                       <input class="form-control" type="text" name="coupon_name" value="{{ $coupon->coupon_name }}" placeholder="Enter coupon_name">
@@ -48,6 +55,7 @@
                       <button type="submit" class="btn btn-info">Update Coupon</button>
                     </div><!-- form-layout-footer -->
                   </form>
+                  
                   </div>
               </div>
             </div>

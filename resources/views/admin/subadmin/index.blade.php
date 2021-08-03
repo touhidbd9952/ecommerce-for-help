@@ -1,7 +1,9 @@
 @extends('layouts.admin-master')
 @section('admin-content')
+
 @section('subadmin') active show-sub @endsection
 @section('all-subadmin') active @endsection
+
 
      <!-- ########## START: MAIN PANEL ########## -->
      <div class="sl-mainpanel">
@@ -27,25 +29,29 @@
                       </tr>
                     </thead>
                     <tbody>
+                    
                       @foreach ($users as $item)
-                      <tr>
-
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->name }}</td>
-                        <td>{{ $item->email }}</td>
-                        <td>
-                            <span class="badge badge-pill badge-success">{{ $item->role->name }}</span>
-                        </td>
-                        <td>
-                          <a href="{{ route('subadmin.edit',$item->id) }}" class="btn btn-sm btn-primary" title="edit data"> <i class="fa fa-pencil"></i></a>
-                        <form action="{{ route('subadmin.destroy',$item->id) }}" method="POST">
-                            @csrf
-                            @method('delete')
-                          <button class="btn btn-sm btn-danger"  title="delete data"><i class="fa fa-trash"></i></button>
-                        </form>
-                        </td>
-                      </tr>
+                              <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->name }}</td>
+                                    <td>{{ $item->email }}</td>
+                                    <td>
+                                        <span class="badge badge-pill badge-success">{{ $item->role->name }}</span>
+                                    </td>
+                                    <td>
+                                    
+                                      <a href="{{ route('subadmin.edit',$item->id) }}" class="btn btn-sm btn-primary" title="edit data"> <i class="fa fa-pencil"></i></a>
+                                      
+                                    <form action="{{ route('subadmin.destroy',$item->id) }}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                      <button class="btn btn-sm btn-danger"  title="delete data"><i class="fa fa-trash"></i></button>
+                                    </form>
+                                    
+                                    </td>
+                              </tr>
                       @endforeach
+                      
                     </tbody>
                   </table>
                 </div><!-- table-wrapper -->

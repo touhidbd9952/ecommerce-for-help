@@ -1,6 +1,6 @@
 @extends('layouts.fontend-master')
-
 @section('content')
+
 <!-- ============================================== HEADER : END ============================================== -->
 <div class="breadcrumb">
 	<div class="container">

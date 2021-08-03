@@ -1,7 +1,9 @@
 @extends('layouts.admin-master')
 @section('admin-content')
+
 @section('categories') active show-sub @endsection
 @section('subsubcategory') active @endsection
+
 
      <!-- ########## START: MAIN PANEL ########## -->
      <div class="sl-mainpanel">
@@ -9,12 +11,16 @@
           <a class="breadcrumb-item" href="index.html">SHopMama</a>
           <span class="breadcrumb-item active">Sub-Sub-Category</span>
         </nav
-        <div class="sl-pagebody">
+        ><div class="sl-pagebody">
             <div class="card pd-20 pd-sm-40">
               <h6 class="card-body-title">Update Sub-Sub-Category</h6>
+              
               <form action="{{ route('update-sub-subcategory') }}" method="POST">
+              
                 @csrf
+                
                 <input type="hidden" name="id" value="{{ $subsubcat->id }}">
+                
             <div class="row row-sm">
                     <div class="col-md-4">
                         <div class="form-group">

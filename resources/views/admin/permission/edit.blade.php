@@ -1,7 +1,9 @@
 @extends('layouts.admin-master')
 @section('admin-content')
+
 @section('permission') active show-sub @endsection
 @section('all-permission') active @endsection
+
 
      <!-- ########## START: MAIN PANEL ########## -->
      <div class="sl-mainpanel">
@@ -17,9 +19,13 @@
               <div class="card">
                 <div class="card-header">Update permission</div>
                   <div class="card-body">
+                  
                 <form action="{{ route('permission.update',$permission->id) }}" method="POST" >
+                
                     @csrf
+                    
                     @method('put')
+                    
                     <div class="row">
                         <div class="col-md-4">
                                <div class="form-group">
